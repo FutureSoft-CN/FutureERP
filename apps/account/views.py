@@ -3,11 +3,12 @@ from django.utils.lorem_ipsum import paragraph
 
 from apps.dashboard.views import load_dashboard
 from django.contrib import auth
-
+from apps.account.forms import LoginForm
 
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
+from FutureERP import settings
 
 # Create your views here.
 def test(request):
@@ -19,37 +20,41 @@ def test(request):
     return render(request,'account/test.html',context)
 
 def test_redirect(request):
-    return HttpResponse("ok")
+#    return HttpResponse("ok")
     return redirect('/dashboard/')
 
 def login(request):
     if request.method=='POST':
-        
-        input_uname = request.POST.get('username','')
-        input_pwd = request.POST.get('password','')       
-        user = auth.authenticate(username=input_uname,password=input_pwd)             
-        if user is not None and user.is_active:
-            auth.login(request, user)
-            return redirect(request, '/dashboard/index.html')
+        forms = LoginForm(request.POST)
+        if forms.is_valid():                
+            user = auth.authenticate(username=forms.cleaned_data['username'],password=forms.cleaned_data['password'])             
+            if user is not None and user.is_active:
+                auth.login(request, user)
+                print('logged in succesfully!')
+                return redirect(settings.LOGIN_REDIRECT_URL)
+            else:
+                return render(request, 'account/login.html',{'status':'ERROR Incorrect username or password'})    
         else:
-            return render(request, 'account/login.html',{'status':'ERROR Incorrect username or password'})    
- 
-    return render(request,'account/login.html')
+            return render(request, 'account/login.html',{'status':'ERROR Incorrect username or password'})
+    else:
+        return render(request,'account/login.html')
   
 @login_required
 def logout(request): 
+#    return HttpResponse("You're logged out.")  
+    print('logged out succesfully!')
     auth.logout(request)
-    return HttpResponse("You're logged out.")     
+    return redirect(settings.LOGOUT_REDIRECT_URL)    
 
 def register(request): 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            new_user = form.save()
+        forms = UserCreationForm(request.POST)
+        if forms.is_valid():
+            new_user = forms.save()
             return redirect('/dashboard/index.html')
     else:
-        form = UserCreationForm()
+        forms = UserCreationForm()
     return render_to_response("registration/register.html", {
-        'form': form,
+        'forms': forms,
     })
     

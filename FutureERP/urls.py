@@ -21,16 +21,16 @@ from apps.account.views import *
 from apps.dashboard.views import load_dashboard
 
 
-urlpatterns = [
-    path('', admin.site.urls),
-    
+urlpatterns = [   
     path('account/', include('account.urls')),
     
     path('login/',include('account.urls')),
     
-    path('logout/',include('account.urls')),
+#    path('logout/',include('account.urls')),
     
     path('dashboard/',include('dashboard.urls')),
+    
+    path('', admin.site.urls),
     
     # for test purpose only
     path('direct/', test_redirect),
