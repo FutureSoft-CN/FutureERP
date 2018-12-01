@@ -28,6 +28,8 @@ urlpatterns = [
     
     path('login/',include('account.urls')),
     
+    path('logout/',include('account.urls')),
+    
     path('dashboard/',include('dashboard.urls')),
     
     # for test purpose only
