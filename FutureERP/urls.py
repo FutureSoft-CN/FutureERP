@@ -17,12 +17,20 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include, url
 
-from apps.account.views import test,login
+from apps.account.views import *
 from apps.dashboard.views import load_dashboard
-from pathlib import Path
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('account/', login, name='login'),
-    path('dashboard/',load_dashboard),
+    path('', admin.site.urls),
+    
+    path('account/', include('account.urls')),
+    
+    path('login/',include('account.urls')),
+    
+    path('dashboard/',include('dashboard.urls')),
+    
+    # for test purpose only
+    path('direct/', test_redirect),
+    
 ]
