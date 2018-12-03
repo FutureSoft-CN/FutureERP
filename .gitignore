@@ -10,7 +10,7 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
+#dist/
 downloads/
 eggs/
 .eggs/
@@ -102,3 +102,28 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+apps_bak/product/urls.py
+apps_bak/product/tests.py
+apps_bak/product/apps.py
+apps_bak/product/admin.py
+apps_bak/dashboard/urls.py
+apps_bak/dashboard/tests.py
+apps_bak/dashboard/models.py
+apps_bak/dashboard/apps.py
+apps_bak/dashboard/__init__.py
+apps_bak/account/views.py
+apps_bak/account/utils.py
+apps_bak/account/urls.py
+apps_bak/account/tests.py
+apps_bak/account/migrations/__init__.py
+apps_bak/account/apps.py
+apps_bak/account/admin.py
+apps_bak/account/__init__.py
+apps_bak/product/views.py
+apps_bak/product/__init__.py
+apps_bak/dashboard/views.py
+apps_bak/account/models.py
+apps_bak/product/models.py
+apps_bak/dashboard/admin.py
+apps_bak/dashboard/migrations/__init__.py
+apps_bak/product/migrations/__init__.py

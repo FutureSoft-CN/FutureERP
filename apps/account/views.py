@@ -1,7 +1,6 @@
 from django.shortcuts import render, render_to_response, redirect
 from django.utils.lorem_ipsum import paragraph
 
-from apps.dashboard.views import load_dashboard
 from django.contrib import auth
 from apps.account.forms import LoginForm
 
@@ -30,7 +29,7 @@ def login(request):
             user = auth.authenticate(username=forms.cleaned_data['username'],password=forms.cleaned_data['password'])             
             if user is not None and user.is_active:
                 auth.login(request, user)
-                print('logged in succesfully!')
+                print('Output from',__file__,'logged in succesfully!')
                 return redirect(settings.LOGIN_REDIRECT_URL)
             else:
                 return render(request, 'account/login.html',{'status':'ERROR Incorrect username or password'})    
@@ -42,7 +41,7 @@ def login(request):
 @login_required
 def logout(request): 
 #    return HttpResponse("You're logged out.")  
-    print('logged out succesfully!')
+    print('Output from',__file__,'logged out succesfully!')
     auth.logout(request)
     return redirect(settings.LOGOUT_REDIRECT_URL)    
 
