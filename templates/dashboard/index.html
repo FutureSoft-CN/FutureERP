@@ -278,7 +278,9 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="/dashboard/index.html"><i class="fa fa-dashboard fa-fw"></i> FutureERP 首页</a>
+                            <!-- <a href="/dashboard/index.html"><i class="fa fa-dashboard fa-fw"></i> FutureERP 首页</a> -->
+                            <!-- <a href="#" onclick="loadSubPage('homepage.html');"><i class="fa fa-dashboard fa-fw"></i> FutureERP 首页</a> -->
+                            <a href="javascript:loadSubPage('homepage.html');"><i class="fa fa-dashboard fa-fw"></i> FutureERP 首页</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> 样品管理<span class="fa arrow"></span></a>
@@ -287,7 +289,7 @@
                                     <a href="#"><i class="fa fa-edit fa-fw"></i> 基础档案 <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="#">客户档案</a>
+                                            <a href="javascript:loadSubPage('sample_customer.html');">客户档案</a>
                                         </li>
                                         <li>
                                             <a href="#">供应商档案</a>                                            
@@ -533,7 +535,10 @@
 </body>
 
 <script>
-$("#page-wrapper").load("{% static "homepage.html" %}");
+loadSubPage('homepage.html');
+function loadSubPage(url) {
+	$("#page-wrapper").load("/static/" + url);
+}
 </script>
 
 </html>
