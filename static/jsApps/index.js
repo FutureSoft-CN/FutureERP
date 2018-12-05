@@ -1,10 +1,10 @@
 loadSubPage('homepage.html');
 
 function loadSubPage(url) {
-	$("#page-wrapper").load("/static/subPages/" + url);
+	$("#page-wrapper").load(staticUrl + "subPages/" + url);
 	// Morris Charts JavaScript
-	$("body").append('<script src="/static/vendor/raphael/raphael.min.js"></script>');
-	$("body").append('<script src="/static/vendor/morrisjs/morris.min.js"></script>');
-	$("body").append('<script src="/static/data/morris-data.js"></script>');
+	$("body").append('<script src="' + staticUrl + 'vendor/raphael/raphael.min.js"></script>');
+	$("body").append('<script src="' + staticUrl + 'vendor/morrisjs/morris.min.js"></script>');
+	$("body").append('<script src="' + staticUrl + 'data/morris-data.js"></script>');
 }
 
