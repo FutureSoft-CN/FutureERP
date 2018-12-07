@@ -17,7 +17,9 @@ from django.conf.global_settings import LOGOUT_REDIRECT_URL
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
  
-sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
+sys.path.insert(0,os.path.join(BASE_DIR,'extra_apps'))
+sys.path.insert(1,os.path.join(BASE_DIR,'apps'))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -40,16 +42,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',   
     
     #basic apps
-    'apps.account',
-    'apps.dashboard',
-    'apps.product'
+    'account',
+    'dashboard',
+    'product',
     
     #PLM apps
     
     #ERP apps
-    
+ 
+     #extra_apps
+    'xadmin',
 ]
 
 MIDDLEWARE = [
@@ -120,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 

@@ -20,6 +20,7 @@ from django.conf.urls import include, url
 from apps.account.views import *
 from apps.dashboard.views import load_dashboard
 
+import xadmin
 
 urlpatterns = [   
     path('account/', include('account.urls')),
@@ -30,7 +31,10 @@ urlpatterns = [
     
     path('dashboard/',include('dashboard.urls')),
     
-    path('', admin.site.urls),
+#    path('', admin.site.urls),
+    path('', xadmin.site.urls),
+    
+    path('xadmin/', xadmin.site.urls),
     
     # for test purpose only
     path('direct/', test_redirect),
