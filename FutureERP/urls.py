@@ -23,9 +23,9 @@ from apps.dashboard.views import load_dashboard
 import xadmin
 
 urlpatterns = [   
-    path('account/', include('account.urls')),
+    #path('account/', include('account.urls')),
     
-    path('login/',include('account.urls')),
+    #path('login/',include('account.urls')),
     
 #    path('logout/',include('account.urls')),
     
@@ -34,7 +34,7 @@ urlpatterns = [
 #    path('', admin.site.urls),
     path('', xadmin.site.urls),
     
-    path('xadmin/', xadmin.site.urls),
+    #path('xadmin/', xadmin.site.urls),
     
     # for test purpose only
     path('direct/', test_redirect),
