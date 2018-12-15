@@ -127,3 +127,9 @@ apps_bak/product/models.py
 apps_bak/dashboard/admin.py
 apps_bak/dashboard/migrations/__init__.py
 apps_bak/product/migrations/__init__.py
+
+#project files
+.idea/
+.settings/
+.project
+.pydevproject
