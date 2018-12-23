@@ -20,6 +20,8 @@ from django.conf.urls import include, url
 from apps.account.views import *
 from apps.dashboard.views import load_dashboard
 
+from graphene_django.views import GraphQLView
+
 import xadmin
 
 urlpatterns = [   
@@ -38,5 +40,7 @@ urlpatterns = [
     
     # for test purpose only
     path('direct/', test_redirect),
+
+    url(r'^graphql', GraphQLView.as_view(graphiql=True)),
     
 ]
