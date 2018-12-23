@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %}FutureERP首页{% endblock %}
-
+{% block script %}
+<script>
+    var staticUrl = "{% static "" %}";
+</script>
+<script src="{% static "jsApps/index.js" %}"></script>
+{%  endblock %}
