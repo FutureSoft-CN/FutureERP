@@ -52,11 +52,17 @@ INSTALLED_APPS = [
     'account',
     'dashboard',
     'product',
+
     
     #PLM apps
     
     #ERP apps
     'staff',
+    'customer',
+    'inventory',
+    'material',
+    'order',
+    'supplier',
     'worksheet',
  
      #extra_apps
