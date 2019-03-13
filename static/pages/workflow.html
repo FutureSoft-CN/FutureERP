@@ -30,9 +30,71 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <style>
+        div#close {
+            display: none;
+            opacity: 0.4;
+            background-color: darkgrey;
+            left: 0%;
+            top: 0%;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 90010;
+        }
+        div#detail {
+            opacity: 0.9;
+            background-color: white;
+            border-radius: 0.5em;
+            box-shadow: 1px 1px 1px 1px rgba(0, 0, 59, 0.5);
+            left: 5%;
+            top: -95%;
+            width: 90%;
+            height: 90%;
+            position: absolute;
+            z-index: 99999;
+        }
+        div.content {
+            border-top: 1px solid grey;
+            margin: 0;
+            height: calc(100% - 70px);
+            overflow: auto;
+            font: 18px "Microsoft YaHei";
+            letter-spacing: 1px;
+            color: #888888;
+            line-height: 50px;
+        }
+        div.inner {
+            margin: 1em;
+        }
+    </style>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+
+    <div id="close"></div>
+    <div id="detail">
+        <div class="inner">
+            <table style="width:100%">
+                <tr>
+                    <td style="width:40px;" id="return_back" nowrap>
+                        <img style="height:25px;" src="img/left.jpg">
+                    </td>
+                    <td style="font-size:25px;" id="detail_title" nowrap></td>
+                    <td align="right" onclick='$("#close").click();' nowrap>
+                        <img style="height:30px;" src="img/chacha.png" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="content">
+            <div class="inner">工单标题 <input /></div>
+            <div class="inner">业务类型 <input /></div>
+            <div class="inner">提交人 <input /></div>
+        </div>
+    </div>
 
   <header class="main-header">
     <!-- Logo -->
@@ -788,7 +850,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-              <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">新建工单</a>
+              <a href="javascript:detailInitial('新建工单')" class="btn btn-sm btn-info btn-flat pull-left">新建工单</a>
               <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">查看所有</a>
             </div>
             <!-- /.box-footer -->
@@ -1040,5 +1102,24 @@
     })
   })
 </script>
+
+    <script>
+        function detailInitial(title) {
+            $("#close").show();
+            $("#detail").animate({top: "5%"});
+            $("#detail_title").html(title);
+            var content = $("#detail .content");
+            content.prop('scrollTop', '0');
+            //content.html('');
+            return content;
+        }
+
+
+        $("#close").click(function() {
+            $("#close").hide();
+            $("#detail").animate({top: "-95%"});
+        });
+    </script>
+
 </body>
 </html>
